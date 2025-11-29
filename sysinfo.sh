@@ -18,7 +18,7 @@ echo
 echo "=========UPTIME=================="
 echo
 
-echo "Up_time:        $(uptime -p)"                             # $uptime prints the time the pc has been on
+echo "Up_time:        $(uptime -p)"                             # uptime -p prints the time the pc has been on
 
 
 
@@ -28,14 +28,13 @@ echo
 echo "=========MEMORY USAGE============="
 echo
 
-                                                          
-MEM_TOTAL=$(free -m | awk '/Mem:/ {print $2}')           # $2 prints the total memory
-MEM_USED=$(free -m | awk '/Mem:/ {print $3}')            # awk mem extract the needed memory information
-MEM_FREE=$(free -m | awk '/Mem:/ {print $4}')            # free -m allows user to check RAM info
+MEM_TOTAL=$(free -m | awk '/^Mem:/ {print $2}')     # awk mem extracts the memory information 
+MEM_USED=$(free -m | awk '/^Mem:/ {print $3}')
+MEM_FREE=$(free -m | awk '/^Mem:/ {print $4}')
 
-echo "Total: $MEM_TOTAL "
-echo "Used:  $MEM_USED "
-echo "Free:  $MEM_FREE"
+
+echo "Total: $MEM_TOTAL MB | Used: $MEM_USED MB | Free: $MEM_FREE MB"
+
 
 echo
 # Disk Usage
@@ -47,9 +46,7 @@ DISK_USED=$(df -h / | awk 'NR==2 {print $3}')           # h readable by human
 DISK_FREE=$(df -h / | awk 'NR==2 {print $4}')        #print $1 not used because it identifies the system
 
 
-echo "Total: $DISK_TOTAL"
-echo  "Used: $DISK_USED "
-echo "Free: $DISK_FREE"
+echo "Total: $DISK_TOTAL | Used: $DISK_USED | Free: $DISK_FREE"
 
 #Running processes 
 echo
