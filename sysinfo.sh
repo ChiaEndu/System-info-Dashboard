@@ -18,7 +18,7 @@ echo
 echo "=========UPTIME=================="
 echo
 
-echo "Up_time:        $(uptime -p)"                             # uptime -p prints the time the pc has been on
+echo " $(uptime -p)"                             # uptime -p prints the time the pc has been on
 
 
 
